@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalLink = document.getElementById('modal-link');
     const modalClose = document.querySelector('.modal-close');
 
-    // --- DATI DELLE AREE CLICCABILI ---
-    // Ho inserito qui i dati reali del progetto basandomi sulle tue informazioni.
+    // --- NUOVI DATI DELLE AREE CLICCABILI (COORDINATE RICALCOLATE) ---
+    // Ho ricalcolato questi valori basandomi sull'immagine con le aree fuori posto.
     const clickableAreasData = [
         {
             name: 'EditorSpartitoOnline',
             shape: 'rect',
-            coords: '229,270,446,450',
+            coords: '228,268,448,453', // <-- Nuove coordinate
             imageUrl: 'images/EditorSpartitoOnline.png',
             externalUrl: 'https://beyerop101.com/editor-spartito-online/',
             description: 'Visualizza i dettagli dell\'Editor di Spartiti Online'
@@ -19,15 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'MidiEditor',
             shape: 'rect',
-            coords: '237,500,437,667',
+            coords: '235,498,438,670', // <-- Nuove coordinate
             imageUrl: 'images/MidiEditor.png',
-            externalUrl: null, // Nessun link esterno, come confermato
+            externalUrl: null, 
             description: 'Visualizza i dettagli del MIDI Editor'
         },
         {
             name: 'PentagrammaInterattivo',
             shape: 'rect',
-            coords: '236,818,441,984',
+            coords: '235,818,442,986', // <-- Nuove coordinate
             imageUrl: 'images/PentagrammaInterattivo.png',
             externalUrl: 'https://beyerop101.com/pentagramma-interattivo/',
             description: 'Visualizza i dettagli del Pentagramma Interattivo'
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'SpartitoPrincipale',
             shape: 'rect',
-            coords: '571,628,866,887',
+            coords: '570,628,868,890', // <-- Nuove coordinate
             imageUrl: 'images/SpartitoPrincipale.png',
             externalUrl: 'https://beyerop101.com/midi-trasformer/',
             description: 'Visualizza lo spartito e il MIDI Transformer'
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'IAPianoTutor',
             shape: 'rect',
-            coords: '1388,643,1686,902',
+            coords: '1386,642,1688,905', // <-- Nuove coordinate
             imageUrl: 'images/IAPianoTutor.png',
             externalUrl: 'https://beyerop101.com/iapiano-tutor/',
             description: 'Visualizza i dettagli dell\'IA Piano Tutor'
@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Funzione per creare gli elementi DOM per ogni area cliccabile
     function createClickableAreas() {
+        document.querySelectorAll('.clickable-area').forEach(area => area.remove());
+
         clickableAreasData.forEach((areaData, index) => {
             const div = document.createElement('div');
             div.classList.add('clickable-area');
@@ -63,25 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
             div.style.width = `${coords[2] - coords[0]}px`;
             div.style.height = `${coords[3] - coords[1]}px`;
 
-            // Aggiungi l'evento click per aprire la modale
             div.addEventListener('click', function() {
                 const data = clickableAreasData[parseInt(this.dataset.index)];
-                
-                // Popola la modale con i dati corretti
                 modalImage.src = data.imageUrl;
-                
                 if (data.externalUrl) {
                     modalLink.href = data.externalUrl;
                     modalLink.classList.remove('hidden');
                 } else {
                     modalLink.classList.add('hidden');
                 }
-
-                // Mostra la modale
                 modal.classList.add('visible');
             });
 
-            // Aggiungi eventi per hover (mostra tooltip)
             let tooltipDiv = null;
             div.addEventListener('mouseover', function() {
                 const data = clickableAreasData[parseInt(this.dataset.index)];
@@ -111,20 +106,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Funzione per chiudere la modale
     function closeModal() {
         modal.classList.remove('visible');
     }
 
-    // Event listener per chiudere la modale
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', function(e) {
-        // Chiude la modale solo se si clicca sullo sfondo (overlay)
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Chiamata iniziale per creare le aree
     createClickableAreas();
 });
