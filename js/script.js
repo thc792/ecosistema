@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalLink = document.getElementById('modal-link');
     const modalClose = document.querySelector('.modal-close');
 
-    // --- NUOVI DATI DELLE AREE CLICCABILI (COORDINATE RICALCOLATE) ---
-    // Ho ricalcolato questi valori basandomi sull'immagine con le aree fuori posto.
+    // --- TENTATIVO #2: COORDINATE RICALCOLATE E RIDIMENSIONATE ---
     const clickableAreasData = [
         {
             name: 'EditorSpartitoOnline',
             shape: 'rect',
-            coords: '228,268,448,453', // <-- Nuove coordinate
+            coords: '223, 258, 443, 443', // <-- Ricalcolate
             imageUrl: 'images/EditorSpartitoOnline.png',
             externalUrl: 'https://beyerop101.com/editor-spartito-online/',
             description: 'Visualizza i dettagli dell\'Editor di Spartiti Online'
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'MidiEditor',
             shape: 'rect',
-            coords: '235,498,438,670', // <-- Nuove coordinate
+            coords: '237, 498, 440, 655', // <-- Ricalcolate
             imageUrl: 'images/MidiEditor.png',
             externalUrl: null, 
             description: 'Visualizza i dettagli del MIDI Editor'
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'PentagrammaInterattivo',
             shape: 'rect',
-            coords: '235,818,442,986', // <-- Nuove coordinate
+            coords: '235, 833, 442, 991', // <-- Ricalcolate
             imageUrl: 'images/PentagrammaInterattivo.png',
             externalUrl: 'https://beyerop101.com/pentagramma-interattivo/',
             description: 'Visualizza i dettagli del Pentagramma Interattivo'
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'SpartitoPrincipale',
             shape: 'rect',
-            coords: '570,628,868,890', // <-- Nuove coordinate
+            coords: '610, 653, 958, 875', // <-- Ricalcolate (correzione maggiore)
             imageUrl: 'images/SpartitoPrincipale.png',
             externalUrl: 'https://beyerop101.com/midi-trasformer/',
             description: 'Visualizza lo spartito e il MIDI Transformer'
@@ -43,14 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'IAPianoTutor',
             shape: 'rect',
-            coords: '1386,642,1688,905', // <-- Nuove coordinate
+            coords: '1382, 640, 1684, 903', // <-- Ricalcolate
             imageUrl: 'images/IAPianoTutor.png',
             externalUrl: 'https://beyerop101.com/iapiano-tutor/',
             description: 'Visualizza i dettagli dell\'IA Piano Tutor'
         }
     ];
 
-    // Funzione per creare gli elementi DOM per ogni area cliccabile
+    // (Il resto del codice rimane invariato)
+
     function createClickableAreas() {
         document.querySelectorAll('.clickable-area').forEach(area => area.remove());
 
