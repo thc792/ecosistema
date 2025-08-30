@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#main-diagram {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.clickable-area {
+    position: absolute;
+    background-color: rgba(0, 123, 255, 0.2); /* Colore blu semi-trasparente */
+    border: 1.5px dashed #007bff; /* Bordo blu tratteggiato */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.clickable-area:hover {
+    transform: scale(1.02);
+    background-color: rgba(0, 123, 255, 0.4); /* Blu più intenso all'hover */
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    z-index: 1000;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* --- NUOVI STILI PER LA FINESTRA MODALE (LIGHTBOX) --- */
+
+.modal-overlay {
+    position: fixed; /* Si posiziona rispetto alla finestra del browser */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Sfondo nero semi-trasparente */
+    display: none; /* Nascosto di default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Sopra tutto il resto */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #333;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: 75vh; /* Limita l'altezza per lasciare spazio al pulsante */
+    margin-bottom: 20px;
+}
+
+.modal-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.modal-button:hover {
+    background-color: #0056b3;
+}
+
+.modal-button.hidden {
+    display: none; /* Nasconde il pulsante se non c'è link */
+}
